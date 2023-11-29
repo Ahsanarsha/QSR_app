@@ -1,4 +1,4 @@
-# kds_app
+# QSR_app
 
 A new Flutter project.
 

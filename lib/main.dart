@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kds_app/Screens/home/home_screen.dart';
 import 'package:kds_app/Screens/menu/addToCart.dart';
 import 'package:kds_app/Screens/menu/menu_screen.dart';
+import 'package:kds_app/Screens/menu/order_confirm.dart';
 import 'package:kds_app/Screens/pin_screen.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     HomeScreen.routeName:(context) => const HomeScreen(),
     MenuScreen.routeName: (context) =>  MenuScreen(),
     AddToCart.routeName:(context) => AddToCart(),
+    OrderConfirmScreen.routeName:(context) => OrderConfirmScreen(),
     
   },
       home: const PinScreen(),

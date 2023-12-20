@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
       title: 'KDS App',
   routes: {
     HomeScreen.routeName:(context) => const HomeScreen(),
-    MenuScreen.routeName: (context) =>  MenuScreen(),
-    AddToCart.routeName:(context) => AddToCart(),
-    OrderConfirmScreen.routeName:(context) => OrderConfirmScreen(),
+    MenuScreen.routeName: (context) =>  const MenuScreen(),
+    AddToCart.routeName:(context) => const AddToCart(),
+    OrderConfirmScreen.routeName:(context) => const OrderConfirmScreen(),
     
   },
       home: const PinScreen(),

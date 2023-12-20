@@ -14,7 +14,8 @@ class _OrderConfirmScreenState extends State<OrderConfirmScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xff131218),
+        // backgroundColor: const Color(0xff26272C),
+        backgroundColor: Colors.blueGrey.withOpacity(0.5),
         body: Center(
           child: Column(
             children: [

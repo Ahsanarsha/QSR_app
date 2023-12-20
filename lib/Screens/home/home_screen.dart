@@ -18,10 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
     print('isPortrait $isPortrait');
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.blueGrey.withOpacity(0.5),
+        // backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color(0xff26272C),
-          // foregroundColor: Colors.transparent,
+          // backgroundColor: const Color(0xff26272C),
+           backgroundColor: Colors.blueGrey.shade800,
           automaticallyImplyLeading: false,
           title: Text(
             'KDS',
@@ -41,16 +42,17 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: isPortrait ? 2 : 4,
+                    crossAxisCount: isPortrait ? 2 : 5,
                     childAspectRatio: isPortrait ? 1.6 : 1.9,
                   ),
                   itemCount: 10, // Set the number of items you want in the grid
                   itemBuilder: (BuildContext context, int index) {
                     Color itemColor = index % 3 == 0
-                        ? const Color(0xff25A218)
+                        ? Colors.blue.withOpacity(1)
                         : index % 3 == 1
-                            ? const Color(0xffFBAF03)
-                            : const Color(0xff26272C);
+                            ? Colors.pink.withOpacity(1)
+                            : Colors.grey;
+                            // const Color(0xff26272C);
                     String itemText =
                         index % 3 == 2 ? 'No Orders' : 'Orders 5 items';
                     String itemTime = index % 3 == 2

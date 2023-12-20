@@ -13,12 +13,12 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   List<List<int>> countsList = List.generate(6, (index) => List.filled(10, 0));
   int count = 1;
-  int selectedIndex = -1;
+  int selectedIndex = 0;
   int? singleItemIndex;
   int? singleCatIndex;
 
   final List<Map<String, dynamic>> menuItems = [
-    {'image': 'assets/images/popular.png', "text": 'POPULAR'},
+    {'image': 'assets/images/fire.png', "text": 'POPULAR'},
     {'image': 'assets/images/starter.png', "text": 'STARTER'},
     {'image': 'assets/images/dessert.png', "text": 'DESSERT'},
     {'image': 'assets/images/fast_food.png', "text": 'FAST FOOD'},
@@ -43,9 +43,11 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        backgroundColor: const Color(0xff26272C),
+        // backgroundColor: const Color(0xff26272C),
+        backgroundColor: Colors.blueGrey.shade800,
         // foregroundColor: Colors.transparent,
         automaticallyImplyLeading: true,
         leading: Column(
@@ -60,28 +62,28 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         leadingWidth: 65,
         title: Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+          padding: const EdgeInsets.only(left: 120.0),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.black,
+              color: Colors.white,
             ),
-            width: 200,
+            width: 150,
             height: 35,
             child: Center(
               child: TextField(
                 style: GoogleFonts.getFont(
                   'Poppins',
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 //textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'Search for something',
-                  hintStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  hintText: 'Search',
+                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
                   prefixIcon: Icon(
                     Icons.search,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -89,46 +91,22 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
         ),
         actions: [
-          Center(
-            child: Stack(
-              children: [
-                Container(
-                  height: 40,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.red,
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, AddToCart.routeName);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Add to Cart',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                              )),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+          Stack(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, AddToCart.routeName);
+                  },
+                  icon: const Icon(Icons.shopping_cart)),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, bottom: 10),
+                child: Badge(
+                  backgroundColor: Colors.green,
+                  label: Text('0',
+                      style: GoogleFonts.getFont('Poppins', fontSize: 10)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 80, bottom: 10),
-                  child: Badge(
-                    backgroundColor: Colors.green,
-                    label: Text('0',
-                        style: GoogleFonts.getFont('Poppins', fontSize: 10)),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -136,7 +114,8 @@ class _MenuScreenState extends State<MenuScreen> {
         children: [
           Container(
             width: 100,
-            color: const Color(0xff131218),
+            // color: const Color.fromARGB(255, 156, 150, 150),
+            color: Colors.blueGrey.shade600,
             child: ListView.builder(
               itemCount: menuItems.length,
               itemBuilder: (context, index) {
@@ -163,7 +142,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             height: 70,
                             decoration: BoxDecoration(
                               color: index == selectedIndex
-                                  ? Colors.green.withOpacity(0.5)
+                                  ? Colors.black.withOpacity(0.5)
                                   : Colors.transparent,
                             ),
                             child: Transform.scale(
@@ -199,9 +178,7 @@ class _MenuScreenState extends State<MenuScreen> {
               itemCount: menuItems.length,
               onPageChanged: (index) {
                 setState(() {
-                  // if ()
                   selectedIndex = index;
-
                 });
               },
               scrollDirection: Axis.horizontal,
@@ -212,7 +189,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: 10,
+                  itemCount: 5,
                   itemBuilder: (context, itemIndex) {
                     bool isSelected =
                         singleItemIndex == itemIndex && singleCatIndex == index;
@@ -231,18 +208,18 @@ class _MenuScreenState extends State<MenuScreen> {
                           }
                         });
                       },
-                      child: Container(
-                        color: Colors.amber,
+                      child: SizedBox(
+                        // color: Colors.amber,
                         height: 170,
                         child: Stack(
                           children: [
                             Image.asset(
-                              'assets/images/pizza3.jpg',
+                              'assets/images/pizza4.png',
                               width: double.infinity,
                               fit: BoxFit.fill,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 10, top: 15),
+                              padding: const EdgeInsets.only(left: 10, top: 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -272,12 +249,15 @@ class _MenuScreenState extends State<MenuScreen> {
                             if (isSelected || countsList[index][itemIndex] > 0)
                               Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     begin: Alignment.bottomCenter,
-                                    stops: [0.01, 0.6],
+                                    stops: const [0.01, 0.6],
                                     end: Alignment.topCenter,
-                                    colors: [Colors.green, Colors.transparent],
+                                    colors: [
+                                      Colors.black.withOpacity(0.8),
+                                      Colors.transparent
+                                    ],
                                   ),
                                 ),
                               ),

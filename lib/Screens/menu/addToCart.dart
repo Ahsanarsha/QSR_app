@@ -14,32 +14,37 @@ class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff26272C),
+      // backgroundColor: const Color(0xff26272C),
+        backgroundColor: Colors.blueGrey.withOpacity(0.5),
       appBar: AppBar(
-        backgroundColor: const Color(0xff26272C),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 5),
-            child: Container(
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.red,
-              ),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    //  Navigator.pushNamed(context, AddToCart.routeName);
-                  },
-                  child: Text('Add to Cart',
-                      style: GoogleFonts.getFont(
-                        'Poppins',
-                      )),
-                ),
-              ),
-            ),
-          ),
-        ],
+        // backgroundColor: const Color(0xff26272C),
+        backgroundColor: Colors.blueGrey.shade800,
+
+        centerTitle: true,
+        title: Text('Add to Cart'),
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 5),
+        //     child: Container(
+        //       width: 100,
+        //       decoration: BoxDecoration(
+        //         borderRadius: BorderRadius.circular(20),
+        //         color: Colors.red,
+        //       ),
+        //       child: Center(
+        //         child: GestureDetector(
+        //           onTap: () {
+        //             //  Navigator.pushNamed(context, AddToCart.routeName);
+        //           },
+        //           child: Text('Add to Cart',
+        //               style: GoogleFonts.getFont(
+        //                 'Poppins',
+        //               )),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ],
       ),
       body: Column(
         children: [
@@ -157,7 +162,8 @@ class _AddToCartState extends State<AddToCart> {
             child: Column(
               children: [
                 Container(
-                  color: const Color(0xff131218),
+                  // color: const Color(0xff131218),
+                  color: Colors.blueGrey.shade400,
                   height: 60,
                   width: double.infinity,
                   child: Padding(
@@ -201,7 +207,6 @@ class _AddToCartState extends State<AddToCart> {
                             color: Colors.white,
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
